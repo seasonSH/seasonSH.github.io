@@ -8576,12 +8576,12 @@ body.offcanvas #colorlib-main, body.offcanvas .colorlib-nav-toggle {
 }
 
 a {
-  transition: 0.3s all ease;
+  transition: 0.1s all ease;
   color: #f05d23;
 }
 a:hover, a:focus {
   text-decoration: none;
-  color: #f05d23;
+  color: #5dd28e;
   outline: none !important;
 }
 
@@ -9310,6 +9310,22 @@ h1, h2, h3, h4, h5,
   color: #f05d23;
 }
 
+@-webkit-keyframes flash {
+  0% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes flash {
+  0% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 .blog-entry {
   margin-bottom: 6em;
 }
@@ -9323,6 +9339,32 @@ h1, h2, h3, h4, h5,
 }
 .blog-entry .img.img-2 {
   height: 300px;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+.blog-entry .img.img-2::before {
+  /*position: absolute;*/
+  top: 0;
+  left: 0;
+  z-index: 2;
+  display: block;
+  content: "";
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  background-color: #000;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+.blog-entry .img.img-2:hover {
+  -webkit-animation: flash 1.5s;
+  animation: flash 1.5s;
+  /*background-size: 100% !important;*/
+}
+.blog-entry .img.img-2:hover::before {
+  /*opacity: 0.3;
+  -webkit-animation: flash .75s;
+  animation: flash .75s;*/
 }
 .blog-entry .img.img-3 {
   height: 240px;
