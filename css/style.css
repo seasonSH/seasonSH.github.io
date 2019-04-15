@@ -9368,6 +9368,30 @@ h1, h2, h3, h4, h5,
 }
 .blog-entry .img.img-3 {
   height: 240px;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+.blog-entry .img.img-3::before {
+  /*position: absolute;*/
+  top: 0;
+  left: 0;
+  z-index: 2;
+  display: block;
+  content: "";
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  background-color: #fff;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+.blog-entry .img.img-3:hover {
+  opacity: 0.6;
+}
+.blog-entry .img.img-3:hover::before {
+  /*opacity: 0.3;
+  -webkit-animation: flash .75s;
+  animation: flash .75s;*/
 }
 .blog-entry div.img {
   height: 320px;
