@@ -8555,7 +8555,7 @@ body {
 body.offcanvas {
   overflow-x: hidden;
 }
-body.offcanvas #colorlib-aside {
+body.offcanvas #coolib-aside {
   -moz-transform: translateX(0);
   -webkit-transform: translateX(0);
   -ms-transform: translateX(0);
@@ -8566,7 +8566,7 @@ body.offcanvas #colorlib-aside {
   z-index: 999;
   position: fixed;
 }
-body.offcanvas #colorlib-main, body.offcanvas .colorlib-nav-toggle {
+body.offcanvas #coolib-main, body.offcanvas .coolib-nav-toggle {
   top: 0;
   -moz-transform: translateX(270px);
   -webkit-transform: translateX(270px);
@@ -8593,25 +8593,23 @@ h1, h2, h3, h4, h5,
   font-family: "Poppins", Arial, sans-serif;
 }
 
-#colorlib-page {
+#coolib-page {
   width: 100%;
   overflow: hidden;
   position: relative;
 }
 
-#colorlib-aside {
+#coolib-aside {
   padding-top: 3em;
   padding-bottom: 40px;
-  padding-left: 3em;
-  padding-right: 3em;
-  width: 22%;
+  width: 15%;
   position: fixed;
   bottom: 0;
   top: 0;
   left: 0;
   /*overflow-y: scroll;*/
   z-index: 1001;
-  background: rgba(0, 0, 0, 0.04);
+  background: #1a1a1a;
   -moz-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
   -webkit-transition: all 0.5s ease;
@@ -8619,12 +8617,12 @@ h1, h2, h3, h4, h5,
   transition: all 0.5s ease;
 }
 @media (min-width: 992px) {
-  #colorlib-aside {
-    width: 22%;
+  #coolib-aside {
+    width: 15%;
   }
 }
 @media (max-width: 991.98px) {
-  #colorlib-aside {
+  #coolib-aside {
     width: 270px;
     -moz-transform: translateX(-270px);
     -webkit-transform: translateX(-270px);
@@ -8635,7 +8633,7 @@ h1, h2, h3, h4, h5,
     background: rgba(0, 0, 0, 0.04);
   }
 }
-#colorlib-aside #colorlib-logo {
+#coolib-aside #coolib-logo {
   margin-bottom: 2.5em;
   display: block;
   width: 100%;
@@ -8643,85 +8641,57 @@ h1, h2, h3, h4, h5,
   font-size: 34px;
 }
 @media (max-width: 991.98px) {
-  #colorlib-aside #colorlib-logo {
+  #coolib-aside #coolib-logo {
     margin-bottom: 20px;
   }
 }
-#colorlib-aside #colorlib-logo a {
+#coolib-aside #coolib-logo a {
   display: inline-block;
   text-align: center;
-  color: #000000;
+  color: #ddd;
 }
-#colorlib-aside #colorlib-logo a span {
-  color: #cccccc;
+#coolib-aside #coolib-logo a span {
+  color: #919191;
 }
-#colorlib-aside #colorlib-main-menu ul {
+#coolib-aside #coolib-main-menu ul {
   margin: 0;
   padding: 0;
 }
-#colorlib-aside #colorlib-main-menu ul li {
-  margin: 0 0 20px 0;
-  padding: 0;
+#coolib-aside #coolib-main-menu ul li {
   list-style: none;
-  font-size: 18px;
-  font-weight: 700;
-}
-#colorlib-aside #colorlib-main-menu ul li a {
-  color: rgba(0, 0, 0, 0.5);
-  text-decoration: none;
-  position: relative;
-  padding: 10px 0;
-  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 16px;
   -moz-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
   -webkit-transition: all 0.3s ease;
   -ms-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
-#colorlib-aside #colorlib-main-menu ul li a:after {
-  content: "";
-  position: absolute;
-  height: 1px;
-  bottom: 7px;
-  left: 0;
-  right: 0;
-  background-color: #000000;
-  visibility: hidden;
-  -webkit-transform: scaleX(0);
-  -moz-transform: scaleX(0);
-  -ms-transform: scaleX(0);
-  -o-transform: scaleX(0);
-  transform: scaleX(0);
-  -webkit-transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  -moz-transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  -ms-transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  -o-transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-#colorlib-aside #colorlib-main-menu ul li a:hover {
+#coolib-aside #coolib-main-menu ul li a {
+  /*border-top: 1px solid #111;*/
+  border-bottom: 1px solid #333;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-left: 15%;
+  margin-right: 15%;
+  display: block;
+  color: #ddd;
   text-decoration: none;
-  color: black;
+  position: relative;
+  text-align: left;
 }
-#colorlib-aside #colorlib-main-menu ul li a:hover:after {
-  visibility: visible;
-  -webkit-transform: scaleX(1);
-  -moz-transform: scaleX(1);
-  -ms-transform: scaleX(1);
-  -o-transform: scaleX(1);
-  transform: scaleX(1);
+#coolib-aside #coolib-main-menu ul li a.top-item {
+  /*border-top: 1px solid #333;*/
 }
-#colorlib-aside #colorlib-main-menu ul li.colorlib-active a {
-  color: #000000;
+#coolib-aside #coolib-main-menu ul li a.bottom-item {
+  border-bottom: none !important;
 }
-#colorlib-aside #colorlib-main-menu ul li.colorlib-active a:after {
-  visibility: visible;
-  -webkit-transform: scaleX(1);
-  -moz-transform: scaleX(1);
-  -ms-transform: scaleX(1);
-  -o-transform: scaleX(1);
-  transform: scaleX(1);
+#coolib-aside #coolib-main-menu ul li:hover {
+  background-color: #3c3c3c;
 }
-#colorlib-aside .colorlib-footer {
+#coolib-aside .coolib-footer {
+  display: none;
   position: absolute;
   bottom: 40px;
   right: 1.5em;
@@ -8731,30 +8701,30 @@ h1, h2, h3, h4, h5,
   color: rgba(0, 0, 0, 0.6);
   padding: 0 20px;
 }
-#colorlib-aside .colorlib-footer span {
+#coolib-aside .coolib-footer span {
   display: block;
 }
-#colorlib-aside .colorlib-footer ul {
+#coolib-aside .coolib-footer ul {
   padding: 0;
   margin: 0;
 }
-#colorlib-aside .colorlib-footer ul li {
+#coolib-aside .coolib-footer ul li {
   padding: 0;
   margin: 0;
   display: inline;
   list-style: none;
 }
-#colorlib-aside .colorlib-footer ul li a {
+#coolib-aside .coolib-footer ul li a {
   color: rgba(0, 0, 0, 0.7);
   padding: 4px;
 }
-#colorlib-aside .colorlib-footer ul li a:hover, #colorlib-aside .colorlib-footer ul li a:active, #colorlib-aside .colorlib-footer ul li a:focus {
+#coolib-aside .coolib-footer ul li a:hover, #coolib-aside .coolib-footer ul li a:active, #coolib-aside .coolib-footer ul li a:focus {
   text-decoration: none;
   outline: none;
   color: #f05d23;
 }
 
-#colorlib-main {
+#coolib-main {
   width: 100%;
   float: right;
   -moz-transition: all 0.5s ease;
@@ -8764,26 +8734,26 @@ h1, h2, h3, h4, h5,
   transition: all 0.5s ease;
 }
 @media (min-width: 992px) {
-  #colorlib-main {
-    width: 78%;
+  #coolib-main {
+    width: 85%;
   }
 }
 
-.colorlib-nav-toggle {
+.coolib-nav-toggle {
   cursor: pointer;
   text-decoration: none;
 }
-.colorlib-nav-toggle.active i::before, .colorlib-nav-toggle.active i::after {
+.coolib-nav-toggle.active i::before, .coolib-nav-toggle.active i::after {
   background: #000000;
 }
-.colorlib-nav-toggle.dark.active i::before, .colorlib-nav-toggle.dark.active i::after {
+.coolib-nav-toggle.dark.active i::before, .coolib-nav-toggle.dark.active i::after {
   background: #000000;
 }
-.colorlib-nav-toggle:hover, .colorlib-nav-toggle:focus, .colorlib-nav-toggle:active {
+.coolib-nav-toggle:hover, .coolib-nav-toggle:focus, .coolib-nav-toggle:active {
   outline: none;
   border-bottom: none !important;
 }
-.colorlib-nav-toggle i {
+.coolib-nav-toggle i {
   position: relative;
   display: inline-block;
   width: 30px;
@@ -8795,7 +8765,7 @@ h1, h2, h3, h4, h5,
   background: #000000;
   transition: all 0.2s ease-out;
 }
-.colorlib-nav-toggle i::before, .colorlib-nav-toggle i::after {
+.coolib-nav-toggle i::before, .coolib-nav-toggle i::after {
   content: "";
   width: 30px;
   height: 2px;
@@ -8808,13 +8778,13 @@ h1, h2, h3, h4, h5,
   -ms-transition: all 0.2s ease;
   transition: all 0.2s ease;
 }
-.colorlib-nav-toggle.dark i {
+.coolib-nav-toggle.dark i {
   position: relative;
   color: #000000;
   background: #000000;
   transition: all 0.2s ease-out;
 }
-.colorlib-nav-toggle.dark i::before, .colorlib-nav-toggle.dark i::after {
+.coolib-nav-toggle.dark i::before, .coolib-nav-toggle.dark i::after {
   background: #000000;
   -moz-transition: all 0.2s ease;
   -o-transition: all 0.2s ease;
@@ -8823,27 +8793,27 @@ h1, h2, h3, h4, h5,
   transition: all 0.2s ease;
 }
 
-.colorlib-nav-toggle i::before {
+.coolib-nav-toggle i::before {
   top: -7px;
 }
 
-.colorlib-nav-toggle i::after {
+.coolib-nav-toggle i::after {
   bottom: -7px;
 }
 
-.colorlib-nav-toggle:hover i::before {
+.coolib-nav-toggle:hover i::before {
   top: -10px;
 }
 
-.colorlib-nav-toggle:hover i::after {
+.coolib-nav-toggle:hover i::after {
   bottom: -10px;
 }
 
-.colorlib-nav-toggle.active i {
+.coolib-nav-toggle.active i {
   background: transparent;
 }
 
-.colorlib-nav-toggle.active i::before {
+.coolib-nav-toggle.active i::before {
   top: 0;
   -webkit-transform: rotateZ(45deg);
   -moz-transform: rotateZ(45deg);
@@ -8852,7 +8822,7 @@ h1, h2, h3, h4, h5,
   transform: rotateZ(45deg);
 }
 
-.colorlib-nav-toggle.active i::after {
+.coolib-nav-toggle.active i::after {
   bottom: 0;
   -webkit-transform: rotateZ(-45deg);
   -moz-transform: rotateZ(-45deg);
@@ -8861,7 +8831,7 @@ h1, h2, h3, h4, h5,
   transform: rotateZ(-45deg);
 }
 
-.colorlib-nav-toggle {
+.coolib-nav-toggle {
   position: fixed;
   left: -12px;
   top: 0px;
@@ -8877,7 +8847,7 @@ h1, h2, h3, h4, h5,
   transition: all 0.5s ease;
 }
 @media (max-width: 991.98px) {
-  .colorlib-nav-toggle {
+  .coolib-nav-toggle {
     opacity: 1;
     visibility: visible;
   }
