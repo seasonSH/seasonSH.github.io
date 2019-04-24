@@ -8738,6 +8738,10 @@ h1, h2, h3, h4, h5,
     width: 85%;
   }
 }
+#coolib-main .col-md-6 {
+  padding-left: 30px;
+  padding-right: 30px;
+}
 
 .coolib-nav-toggle {
   cursor: pointer;
