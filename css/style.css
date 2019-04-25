@@ -9333,12 +9333,12 @@ h1, h2, h3, h4, h5,
 .blog-entry .img.img-2:hover {
   -webkit-animation: flash 1.5s;
   animation: flash 1.5s;
-  /*background-size: 100% !important;*/
+}
+.blog-entry .img.img-2:hover.autozoom {
+  background-size: 100% !important;
 }
 .blog-entry .img.img-2:hover::before {
-  /*opacity: 0.3;
-  -webkit-animation: flash .75s;
-  animation: flash .75s;*/
+  /*opacity: 0.3;*/
 }
 .blog-entry .img.img-3 {
   height: 240px;
