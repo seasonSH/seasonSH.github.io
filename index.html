@@ -47,7 +47,7 @@
 
 		<!-- Aside Bar -->
 		<aside id="coolib-aside" role="complementary" class="js-fullheight text-center">
-			<h1 id="coolib-logo"><a href="index.html">Menu<span>.</span></a></h1>
+			<!-- <h1 id="coolib-logo"><a href="index.html">Menu<span>.</span></a></h1> -->
 			<nav id="coolib-main-menu" role="navigation">
 				<ul>
 					<li><a class='top-item' href="#front">Home</a></li>
@@ -79,7 +79,7 @@
 						<div class="desc">
 							<h2 class="subheading">Hello I'm</h2>
 							<h1 class="mb-4">Yichun Shi</h1>
-							<p class="mb-4">I am currently a research scientist at ByteDance Inc. Prior to this, I was a Ph.D. student in the <a target="_blank" href="http://biometrics.cse.msu.edu">Biometrics Research Group</a> at Michigan State University, supervised by <a target="_blank" href="http://www.cse.msu.edu/~jain/">Dr. Anil K. Jain</a>. I acquired my Bachelor degree from Shanghai Jiao Tong University in China. My main research interests include: Computer Vision, Machine Learning, Face Recognition, Neural Image Synthesis.</p>
+							<p class="mb-4">I am currently a research scientist at ByteDance Inc. Prior to this, I was a Ph.D. student in the <a target="_blank" href="http://biometrics.cse.msu.edu">Biometrics Research Group</a> at Michigan State University, supervised by <a target="_blank" href="http://www.cse.msu.edu/~jain/">Dr. Anil K. Jain</a>. I acquired my Bachelor degree from the IEEE class of Shanghai Jiao Tong University in China. My current research interests are in Generative Models and Neural Rendering, including image, video and 3D generation.</p>
 							<p><a target="_blank" href="static/CV.pdf" class="btn-custom">More About Me (CV) <span class="ion-ios-arrow-forward"></span></a></p>
 						</div>
 					</div>
@@ -92,7 +92,8 @@
 				<div id='projects' class="container">
 					<div class="row justify-content-center mb-5 pb-2">
 						<div class="col-md-7 heading-section text-center ftco-animate">
-							<h2 class="mb-4">Projects</h2>
+							<h2 class="mb-4">Selected Projects</h2>
+							<p><a target="_blank" href="https://scholar.google.com/citations?hl=en&user=RXZChV0AAAAJ&view_op=list_works&sortby=pubdate" class="btn-custom">All Publications <span class="ion-ios-arrow-forward"></span></a></p>
 						</div>
 					</div>
 					<div class="row">
@@ -100,7 +101,93 @@
 						<div class="col-md-6">
 							<div class="blog-entry ftco-animate">
 								<div class='img-box'>
-									<video autoplay="" loop="" muted="" playsinline="" width="100%" height="300">
+									<video autoplay loop muted playsinline width="100%" height="300">
+										<source src="https://mv-dream.github.io/static/visualization.mp4" type="video/mp4">
+									</video>
+								</div>
+								<div class="text text-2 pt-2 mt-3">
+									<span class="category mb-3 d-block">Generative Model, 3D Generation</span>
+									<h5><div style="font-size:12pt">MVDream: Multi-view Diffusion for 3D Generation</div></h5>
+									<p><span class='me'>Y. Shi</span>, P. Wang, J. Ye, M. Long, K. Ye, X. Yang</p>
+									<p>arXiv </p>
+									<div class="meta-wrap">
+											<p class="meta">
+												<span><a target="_blank" href="https://arxiv.org/abs/2308.16512">Paper</a></span>
+												<span><a target="_blank" href="https://mv-dream.github.io/">website</a></span>
+											</p>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<div class="blog-entry ftco-animate">
+								<div class='img-box'>
+									<video autoplay loop muted playsinline width="100%" height="300">
+										<source src="videos/panic3d.mp4" type="video/mp4">
+									</video>
+								</div>
+								<div class="text text-2 pt-2 mt-3">
+									<span class="category mb-3 d-block">Generative Model, 3D Generation</span>
+									<h5><div style="font-size:12pt">PAniC-3D: Stylized Single-view 3D Reconstruction from Portraits of Anime Characters</div></h5>
+									<p>S. Chen, K. Zhang, <span class='me'>Y. Shi</span>, H. Wang, Y. Zhu, G. Song, S. An, J. Kristjansson, X. Yang, M. Zwicker</p>
+									<p>in CVPR, 2023 </p>
+									<div class="meta-wrap">
+											<p class="meta">
+												<span><a target="_blank" href="https://arxiv.org/abs/2303.14587">arXiv</a></span>
+												<span><a target="_blank" href="https://www.youtube.com/watch?v=7NosmLieg6A">video</a></span>
+												<span><a target="_blank" href="https://github.com/ShuhongChen/panic3d-anime-reconstruction">code</a></span>
+											</p>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<div class="blog-entry ftco-animate">
+								<div class='img-box'>
+									<video controls width="100%" height="300">
+										<source src="videos/Panohead.mp4" type="video/mp4">
+									</video>
+								</div>
+								<div class="text text-2 pt-2 mt-3">
+									<span class="category mb-3 d-block">Generative Model, 3D Generation</span>
+									<h5><div style="font-size:12pt">PanoHead: Geometry-Aware 3D Full-Head Synthesis in 360</div></h5>
+									<p>S. An, H. Xu, <span class='me'>Y. Shi</span>, G. Song, U. Y. Ogras, L. Luo</p>
+									<p>in CVPR, 2023 </p>
+									<div class="meta-wrap">
+											<p class="meta">
+												<span><a target="_blank" href="https://openaccess.thecvf.com/content/CVPR2023/papers/An_PanoHead_Geometry-Aware_3D_Full-Head_Synthesis_in_360deg_CVPR_2023_paper.pdf">Paper</a></span>
+												<span><a target="_blank" href="https://sizhean.github.io/panohead">website</a></span>
+												<span><a target="_blank" href="https://github.com/sizhean/panohead">code</a></span>
+											</p>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<div class="blog-entry ftco-animate">
+								<iframe width="95%" height="300" src="https://www.youtube.com/embed/Z1aXE9q9eUI?si=uowmDiEKC23Z87dL" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+								<div class="text text-2 pt-2 mt-3">
+									<span class="category mb-3 d-block">Generative Model, 3D Generation</span>
+									<h5><div style="font-size:12pt">OmniAvatar: Geometry-Guided Controllable 3D Head Synthesis</div></h5>
+									<p>H. Xu, G. Song, Z. Jiang, J. Zhang, <span class='me'>Y. Shi</span>, J. Liu, W. Ma, J. Feng, L. Luo</p>
+									<p>in CVPR, 2023 </p>
+									<div class="meta-wrap">
+											<p class="meta">
+												<span><a target="_blank" href="https://openaccess.thecvf.com/content/CVPR2023/papers/Xu_OmniAvatar_Geometry-Guided_Controllable_3D_Head_Synthesis_CVPR_2023_paper.pdf">Paper</a></span>
+												<span><a target="_blank" href="https://www.youtube.com/watch?v=Z1aXE9q9eUI">video</a></span>
+											</p>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<div class="blog-entry ftco-animate">
+								<div class='img-box'>
+									<video autoplay loop muted playsinline width="100%" height="300">
 										<source src="videos/semanticstylegan.mp4" type="video/mp4">
 									</video>
 								</div>
@@ -119,13 +206,14 @@
 									</div>
 								</div>
 							</div>
-						</div><!-- END Entry -->
+						</div>
+
 						<div class="col-md-6">
 							<div class="blog-entry ftco-animate">
 								<div class='img-box'><div href="#" class="img img-2" style="background-image: url(images/generation_web_compress.gif);
 									background-size: 100%;"></div></div>
 								<div class="text text-2 pt-2 mt-3">
-									<span class="category mb-3 d-block">Generative Model, Unsupervised 3D Learning</span>
+									<span class="category mb-3 d-block">Generative Model, 3D Generation</span>
 									<h5>Lifting 2D StyleGAN for 3D-aware Face Generation</h5>
 									<p><span class='me'>Y. Shi</span>, D. Aggarwal, A. K. Jain</p>
 									<p>in CVPR, 2021</p>
@@ -138,8 +226,9 @@
 									</div>
 								</div>
 							</div>
-						</div><!-- END Entry -->
-						<div class="col-md-6">
+						</div>
+
+						<!-- <div class="col-md-6">
 							<div class="blog-entry ftco-animate">
 								<div class='img-box'><div href="#" class="img img-2" style="background-image: url(images/Generalization.png);
 									background-size: 100%;"></div></div>
@@ -157,7 +246,8 @@
 									</div>
 								</div>
 							</div>
-						</div><!-- END Entry -->
+						</div> -->
+
 						<div class="col-md-6">
 							<div class="blog-entry ftco-animate">
 								<div class='img-box'><div href="#" class="img img-2" style="background-image: url(images/URFace.png);
@@ -175,7 +265,8 @@
 									</div>
 								</div>
 							</div>
-						</div><!-- END Entry -->
+						</div>
+
 						<div class="col-md-6">
 							<div class="blog-entry ftco-animate">
 								<div class='img-box'><div href="#" class="img img-2" style="background-image: url(images/PFE.png);
@@ -193,7 +284,8 @@
 									</div>
 								</div>
 							</div>
-						</div><!-- END Entry -->
+						</div>
+
 						<div class="col-md-6">
 							<div class="blog-entry ftco-animate">
 								<!-- <div href="#" class="img img-2" style="background-image: url(images/docface_plus.jpg);
@@ -213,9 +305,9 @@
 									</div>
 								</div>
 							</div>
-						</div><!-- END Entry -->
+						</div>
 
-						<div class="col-md-6">
+						<!-- <div class="col-md-6">
 							<div class="blog-entry ftco-animate">
 								<div class='img-box'><div href="#" class="img img-2" style="background-image: url(images/c-fan.png);
 									background-size: 95%;"></div></div>
@@ -228,12 +320,11 @@
 											<p class="meta">
 												<span><a target="_blank" href="https://scholar.google.com/scholar?hl=en&as_sdt=0%2C23&q=Video+Face+Recognition%3A+Component-wise+Feature+Aggregation+Network+%28C-FAN%29&btnG=">cite</a></span>
 												<span><a target="_blank" href="https://arxiv.org/abs/1902.07327">arxiv</a></span>
-												<!-- <span><a target="_blank" href="">code</a></span> -->
 											</p>
 									</div>
 								</div>
 							</div>
-						</div><!-- END Entry -->
+						</div> -->
 
 						<div class="col-md-6">
 							<div class="blog-entry ftco-animate">
@@ -254,9 +345,9 @@
 									</div>
 								</div>
 							</div>
-						</div><!-- END Entry -->
+						</div>
 
-						<div class="col-md-6">
+						<!-- <div class="col-md-6">
 							<div class="blog-entry ftco-animate">
 								<div href="#" class="img img-2" style="background-image: url(images/docface_plus.jpg);
 									background-size: 480px;"></div>
@@ -275,9 +366,9 @@
 									</div>
 								</div>
 							</div>
-						</div><!-- END Entry -->
+						</div> -->
 
-						<div class="col-md-6">
+						<!-- <div class="col-md-6">
 							<div class="blog-entry ftco-animate">
 								<div href="#" class="img img-2" style="background-image: url(images/docface.png);
 									background-size: 400px;"></div>
@@ -296,8 +387,9 @@
 									</div>
 								</div>
 							</div>
-						</div><!-- END Entry -->
-						<div class="col-md-6">
+						</div> -->
+
+						<!-- <div class="col-md-6">
 							<div class="blog-entry ftco-animate">
 								<div href="#" class="img img-2" style="background-image: url(images/face_attention.jpg);
 									background-size: 400px;"></div>
@@ -314,7 +406,7 @@
 									</div>
 								</div>
 							</div>
-						</div><!-- END Entry -->
+						</div> -->
 
 						<div class="col-md-6">
 							<div class="blog-entry ftco-animate">
@@ -432,7 +524,7 @@
 											<p>Sunnyvale, 94085, USA</p>
 										</li>
 										<!-- <li><a href="#"><span class="icon icon-phone"></span><span class="text">+1 517 220 8402</span></a></li> -->
-										<li><a href="#"><span class="icon icon-envelope"></span><span class="text">shiyichu (at) msu (dot) edu</span></a></li>
+										<!-- <li><a href="#"><span class="icon icon-envelope"></span><span class="text">shiyichu (at) msu (dot) edu</span></a></li> -->
 										<li><a href="#"><span class="icon icon-envelope"></span><span class="text">sc2h6o (at) gmail (dot) com</span></a></li>
 									</ul>
 								</div>
