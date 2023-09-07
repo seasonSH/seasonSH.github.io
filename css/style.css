@@ -8883,8 +8883,8 @@ h1, h2, h3, h4, h5,
   font-weight: 500;
 }
 .hero-wrap .text .img {
-  width: 200px;
-  height: 200px;
+  width: 250px;
+  height: 250px;
   margin: 0 auto;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
@@ -9492,6 +9492,10 @@ h1, h2, h3, h4, h5,
   }
 }
 
+#experience .blog-entry {
+  margin-bottom: 3em !important;
+}
+
 .form-control {
   height: 52px !important;
   background: #fff !important;
@@ -9523,42 +9527,46 @@ textarea.form-control {
   font-size: 20px;
 }
 .ftco-section {
-  padding: 6em 1.8em;
+  padding: 6em 1.8em 1em 1.8em;
   position: relative;
 }
 
 .ftco-footer {
   font-size: 14px;
-  background: #132238;
-  padding: 6em 0;
+  background: #fff;
+  padding: 1em 0;
+}
+.ftco-footer .container {
+  border-top: 1px solid #dee2e6;
+  padding-top: 3em;
 }
 .ftco-footer .ftco-footer-logo {
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }
 .ftco-footer .ftco-footer-widget h2 {
-  color: #fff;
+  color: #000000;
   margin-bottom: 40px;
   font-size: 17px;
   font-weight: 700;
   letter-spacing: 1px;
 }
 .ftco-footer .ftco-footer-widget ul li a span {
-  color: #fff;
+  color: #000000;
 }
 .ftco-footer .ftco-footer-widget .btn-primary {
-  background: #fff !important;
-  border: 2px solid #fff !important;
+  background: #000000 !important;
+  border: 2px solid #000000 !important;
 }
 .ftco-footer .ftco-footer-widget .btn-primary:hover {
-  background: #fff;
-  border: 2px solid #fff !important;
+  background: #000000;
+  border: 2px solid #000000 !important;
 }
 .ftco-footer p {
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(0, 0, 0, 0.5);
 }
 .ftco-footer a {
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(0, 0, 0, 0.5);
 }
 .ftco-footer a:hover {
   color: #fff;
@@ -9569,14 +9577,13 @@ textarea.form-control {
   color: #000000;
 }
 .ftco-footer .categories li {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   padding: 10px 0;
 }
 .ftco-footer .categories li a {
-  color: rgba(255, 255, 255, 0.5) !important;
+  color: rgba(0, 0, 0, 0.5) !important;
 }
 .ftco-footer .categories li a span {
-  color: rgba(255, 255, 255, 0.8) !important;
+  color: rgba(0, 0, 0, 0.8) !important;
 }
 
 .footer-small-nav > li {
@@ -9742,7 +9749,7 @@ textarea.form-control {
   width: 40px;
   font-size: 18px;
   padding-top: 2px;
-  color: white;
+  color: black;
 }
 
 .block-27 ul {
@@ -10103,3 +10110,5 @@ textarea.form-control {
     stroke-dashoffset: -136px;
   }
 }
+
+/*# sourceMappingURL=style.css.map */

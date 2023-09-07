@@ -342,8 +342,8 @@ h1, h2, h3, h4, h5,
 		font-size: 18px;
 		font-weight: 500;
 		.img{
-			width: 200px;
-			height: 200px;
+			width: 250px;
+			height: 250px;
 			margin: 0 auto;
 			@include border-radius(50%);
 		}
@@ -941,6 +941,10 @@ h1, h2, h3, h4, h5,
 }
 
 
+#experience .blog-entry{
+	margin-bottom: 3em !important;
+}
+
 .form-control {
 	height: 52px!important;
 	background: $white!important;
@@ -978,21 +982,25 @@ textarea.form-control {
 
 
 .ftco-section {
-	padding: 6em 1.8em;
+	padding: 6em 1.8em 1em 1.8em;
 	position: relative;
 }
 
 .ftco-footer {
 	font-size: 14px;
-	background: #132238;
-	padding: 6em 0;;
+	background: #fff;
+	padding: 1em 0;;
+	.container {
+		border-top: 1px solid gray('300');
+		padding-top: 3em;
+	}
 	.ftco-footer-logo {
 		text-transform: uppercase;
 		letter-spacing: .1em;
 	}
 	.ftco-footer-widget {
 		h2 {
-			color: $white;
+			color: $black;
 			margin-bottom: 40px;
 			font-size: 17px;
 			font-weight: 700;
@@ -1002,25 +1010,25 @@ textarea.form-control {
 			li{
 				a{
 					span{
-						color: $white;
+						color: $black;
 					}
 				}
 			}
 		}
 		.btn-primary{
-			background: $white !important;
-			border: 2px solid $white !important;
+			background: $black !important;
+			border: 2px solid $black !important;
 			&:hover{
-				background: $white;
-				border: 2px solid $white !important;
+				background: $black;
+				border: 2px solid $black !important;
 			}
 		}
 	}
 	p {
-		color: rgba($white, .5);
+		color: rgba($black, .5);
 	}
 	a {
-		color: rgba($white, .5);
+		color: rgba($black, .5);
 		&:hover {
 			color: $white;
 		}
@@ -1033,12 +1041,12 @@ textarea.form-control {
 
 	.categories{
 		li{
-			border-bottom: 1px solid rgba(255,255,255,.1);
+			// border-bottom: 1px solid rgba($black, .7);
 			padding: 10px 0;
 			a{
-				color: rgba(255,255,255,.5) !important;
+				color: rgba($black, .5) !important;
 				span{
-					color: rgba(255,255,255,.8) !important;
+					color: rgba($black, .8) !important;
 				}
 			}
 		}
@@ -1224,7 +1232,7 @@ textarea.form-control {
 				width: 40px;
 				font-size: 18px;
 				padding-top: 2px;
-				color: rgba($white, 1);
+				color: rgba($black, 1);
 			}
 			
 		}
