@@ -1,0 +1,97 @@
+.hero {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 80px var(--pad-x) 72px;
+}
+
+.badge {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--accent);
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-border);
+  padding: 5px 14px;
+  border-radius: 20px;
+  margin-bottom: 28px;
+  letter-spacing: 0.1px;
+}
+
+.name {
+  font-size: 52px;
+  font-weight: 800;
+  color: var(--black);
+  line-height: 1.08;
+  margin-bottom: 20px;
+  letter-spacing: -1.5px;
+}
+
+.bio {
+  font-size: 16px;
+  color: var(--gray-mid);
+  line-height: 1.8;
+  max-width: 580px;
+  margin-bottom: 36px;
+}
+
+.bio a {
+  color: var(--gray-dark);
+  border-bottom: 1px solid var(--border);
+  transition: border-color 0.15s;
+}
+
+.bio a:hover {
+  border-color: var(--gray-dark);
+  text-decoration: none;
+}
+
+.links {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-block;
+  padding: 9px 20px;
+  border-radius: 7px;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.15s;
+  cursor: pointer;
+}
+
+.btnPrimary {
+  background: var(--accent);
+  color: #fff;
+  border: 1px solid var(--accent);
+}
+
+.btnPrimary:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+  text-decoration: none;
+}
+
+.btnOutline {
+  background: #fff;
+  color: var(--gray-dark);
+  border: 1px solid var(--border);
+}
+
+.btnOutline:hover {
+  border-color: #aaa;
+  color: var(--black);
+  text-decoration: none;
+}
+
+@media (max-width: 640px) {
+  .name {
+    font-size: 36px;
+    letter-spacing: -1px;
+  }
+  .bio {
+    font-size: 15px;
+  }
+}

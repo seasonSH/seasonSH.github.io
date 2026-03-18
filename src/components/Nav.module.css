@@ -1,0 +1,44 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px var(--pad-x);
+  border-bottom: 1px solid var(--border-light);
+  position: sticky;
+  top: 0;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 100;
+  max-width: 100%;
+}
+
+.name {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--black);
+  letter-spacing: -0.2px;
+}
+
+.links {
+  display: flex;
+  gap: 28px;
+}
+
+.links a {
+  font-size: 13px;
+  color: var(--gray-mid);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.links a:hover {
+  color: var(--black);
+  text-decoration: none;
+}
+
+@media (max-width: 480px) {
+  .links {
+    gap: 16px;
+  }
+}
