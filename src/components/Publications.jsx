@@ -1,3 +1,4 @@
+import { useRef, useState, useEffect } from 'react'
 import styles from './Publications.module.css'
 
 const FEATURED = [
@@ -14,15 +15,14 @@ const FEATURED = [
   },
   {
     tag: 'Image Generation',
-    title: 'SeedEdit: Align Image Re-generation to Image Editing',
-    authorsStr: 'Y. Shi*, P. Wang*, W. Huang',
+    title: 'SeedEdit 3.0: Fast and High-Quality Generative Image Editing',
+    authorsStr: 'P. Wang, Y. Shi, X. Lian, et al.',
     venue: 'Technical Report · ByteDance Seed',
     links: [
+      { label: 'arxiv', url: 'https://arxiv.org/abs/2506.05083' },
       { label: 'website', url: 'https://seed.bytedance.com/tech/seededit' },
-      { label: 'report', url: 'https://lf3-static.bytednsdoc.com/obj/eden-cn/lapzild-tss/ljhwZthlaukjlkulzlp/SeedEdit.pdf' },
-      { label: 'demo', url: 'https://huggingface.co/spaces/ByteDance/SeedEdit-APP' },
     ],
-    video: 'https://lf3-static.bytednsdoc.com/obj/eden-cn/lapzild-tss/ljhwZthlaukjlkulzlp/seed_edit_video_00.mp4',
+    video: 'https://lf3-static.bytednsdoc.com/obj/eden-cn/bdeh7uhpsuht/SeedEdit%203.0%20%E7%BB%88%E7%89%88%E8%A7%86%E9%A2%91.mp4',
   },
   {
     tag: '3D Generation',
@@ -52,12 +52,13 @@ const MORE = [
   },
   {
     tag: 'Image Generation',
-    title: 'SeedEdit 3.0: Fast and High-Quality Generative Image Editing',
-    authorsStr: 'P. Wang, Y. Shi, X. Lian, et al.',
+    title: 'SeedEdit: Align Image Re-generation to Image Editing',
+    authorsStr: 'Y. Shi*, P. Wang*, W. Huang',
     venue: 'Technical Report · ByteDance Seed',
     links: [
-      { label: 'arxiv', url: 'https://arxiv.org/abs/2506.05083' },
       { label: 'website', url: 'https://seed.bytedance.com/tech/seededit' },
+      { label: 'report', url: 'https://lf3-static.bytednsdoc.com/obj/eden-cn/lapzild-tss/ljhwZthlaukjlkulzlp/SeedEdit.pdf' },
+      { label: 'demo', url: 'https://huggingface.co/spaces/ByteDance/SeedEdit-APP' },
     ],
   },
   {
@@ -136,29 +137,139 @@ function PaperLinks({ links }) {
   )
 }
 
-export function FeaturedSlide() {
+export default function Publications() {
+  const scrollRef = useRef(null)
+  const [activePanel, setActivePanel] = useState(0)
+  const activePanelRef = useRef(0)
+  const isScrolling = useRef(false)
+
+  useEffect(() => {
+    const el = scrollRef.current
+    if (!el) return
+    const onScroll = () => {
+      const idx = Math.round(el.scrollLeft / el.clientWidth)
+      setActivePanel(idx)
+      activePanelRef.current = idx
+    }
+    el.addEventListener('scroll', onScroll, { passive: true })
+    return () => el.removeEventListener('scroll', onScroll)
+  }, [])
+
+  // Intercept vertical wheel → horizontal panel navigation
+  useEffect(() => {
+    const slideEl = document.getElementById('publications')
+    if (!slideEl) return
+
+    const unlock = () => { isScrolling.current = false }
+    let unlockTimer = null
+
+    const scheduleUnlock = (el) => {
+      // Prefer scrollend event; fall back to timeout
+      clearTimeout(unlockTimer)
+      const onEnd = () => {
+        el.removeEventListener('scrollend', onEnd)
+        unlockTimer = setTimeout(unlock, 200)
+      }
+      el.addEventListener('scrollend', onEnd, { once: true })
+      // Fallback in case scrollend never fires
+      unlockTimer = setTimeout(() => {
+        el.removeEventListener('scrollend', onEnd)
+        unlock()
+      }, 1000)
+    }
+
+    const onWheel = (e) => {
+      e.preventDefault()
+      e.stopPropagation()
+      if (isScrolling.current) return
+      if (Math.abs(e.deltaY) < 3) return
+
+      isScrolling.current = true
+      const cur = activePanelRef.current
+
+      if (e.deltaY > 0) {
+        if (cur < FEATURED.length - 1) {
+          goTo(cur + 1)
+          scheduleUnlock(scrollRef.current)
+        } else {
+          const slidesEl = document.getElementById('slides')
+          slidesEl?.scrollBy({ top: window.innerHeight, behavior: 'smooth' })
+          scheduleUnlock(slidesEl)
+        }
+      } else {
+        if (cur > 0) {
+          goTo(cur - 1)
+          scheduleUnlock(scrollRef.current)
+        } else {
+          const slidesEl = document.getElementById('slides')
+          slidesEl?.scrollBy({ top: -window.innerHeight, behavior: 'smooth' })
+          scheduleUnlock(slidesEl)
+        }
+      }
+    }
+
+    slideEl.addEventListener('wheel', onWheel, { passive: false })
+    return () => {
+      slideEl.removeEventListener('wheel', onWheel)
+      clearTimeout(unlockTimer)
+    }
+  }, [])
+
+  function goTo(idx) {
+    scrollRef.current?.scrollTo({ left: idx * scrollRef.current.clientWidth, behavior: 'smooth' })
+  }
+
+  const isFirst = activePanel === 0
+  const isLast = activePanel === FEATURED.length - 1
+
   return (
-    <div className={styles.slideContent}>
-      <div className={styles.slideHeader}>
-        <div className={styles.label}>Featured Work</div>
-        <div className={styles.sectionTitle}>Selected Publications</div>
-      </div>
-      <div className={styles.featuredGrid}>
-        {FEATURED.map((p) => (
-          <div key={p.title} className={styles.featCard}>
-            <div className={styles.featThumb}>
+    <div className={styles.container}>
+      <div className={styles.hScroll} ref={scrollRef}>
+        {FEATURED.map((p, i) => (
+          <div key={p.title} className={styles.panel}>
+            <div className={styles.panelVideo}>
               <video autoPlay loop muted playsInline>
                 <source src={p.video} type="video/mp4" />
               </video>
             </div>
-            <div className={styles.featInfo}>
+            <div className={styles.panelInfo}>
+              <div className={styles.panelCount}>
+                {String(i + 1).padStart(2, '0')} / {String(FEATURED.length).padStart(2, '0')}
+              </div>
               <span className={styles.tag}>{p.tag}</span>
-              <div className={styles.paperTitle}>{p.title}</div>
+              <div className={styles.panelTitle}>{p.title}</div>
               <div className={styles.authors}>{p.authorsStr}</div>
               <span className={styles.venue}>{p.venue}</span>
               <PaperLinks links={p.links} />
             </div>
           </div>
+        ))}
+      </div>
+
+      {/* Arrow buttons */}
+      {!isFirst && (
+        <button className={`${styles.arrow} ${styles.arrowLeft}`} onClick={() => goTo(activePanel - 1)} aria-label="previous">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M12 4l-6 6 6 6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </button>
+      )}
+      {!isLast && (
+        <button className={`${styles.arrow} ${styles.arrowRight}`} onClick={() => goTo(activePanel + 1)} aria-label="next">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M8 4l6 6-6 6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </button>
+      )}
+
+      <div className={styles.panelDots}>
+        {FEATURED.map((_, i) => (
+          <button
+            key={i}
+            className={`${styles.panelDot} ${activePanel === i ? styles.panelDotActive : ''}`}
+            onClick={() => goTo(i)}
+            aria-label={`panel ${i + 1}`}
+          />
         ))}
       </div>
     </div>
@@ -167,7 +278,7 @@ export function FeaturedSlide() {
 
 export function MoreSlide() {
   return (
-    <div className={`${styles.slideContent} ${styles.altBg}`}>
+    <div className={styles.moreSlideContent}>
       <div className={styles.slideHeader}>
         <div className={styles.label}>More Work</div>
         <div className={styles.sectionTitle}>Publications</div>
@@ -185,11 +296,7 @@ export function MoreSlide() {
       </div>
       <p className={styles.scholarNote}>
         Full list on{' '}
-        <a
-          href="https://scholar.google.com/citations?hl=en&user=RXZChV0AAAAJ"
-          target="_blank"
-          rel="noreferrer"
-        >
+        <a href="https://scholar.google.com/citations?hl=en&user=RXZChV0AAAAJ" target="_blank" rel="noreferrer">
           Google Scholar
         </a>
       </p>

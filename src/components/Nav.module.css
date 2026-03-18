@@ -40,3 +40,9 @@
 .active {
   color: #111 !important;
 }
+
+@media (max-width: 768px) {
+  .nav { padding: 14px var(--pad); }
+  .links { gap: 20px; }
+  .links a { font-size: 12px; }
+}

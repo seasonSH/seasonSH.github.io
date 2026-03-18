@@ -1,28 +1,93 @@
-.slideContent {
+/* ── Outer container ── */
+.container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Horizontal scroll strip ── */
+.hScroll {
+  flex: 1;
+  display: flex;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.hScroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* ── Featured paper panel ── */
+.panel {
+  min-width: 100%;
+  height: 100%;
+  scroll-snap-align: start;
+  display: flex;
+  align-items: center;
+  padding: 72px var(--pad) 60px;
+  gap: 52px;
+}
+
+.panelVideo {
+  flex: 0 0 62%;
+  aspect-ratio: 16 / 9;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #0a0a0a;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.12);
+  flex-shrink: 0;
+}
+
+.panelVideo video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.panelInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.panelCount {
+  font-size: 11px;
+  color: #bbb;
+  letter-spacing: 1.5px;
+  font-variant-numeric: tabular-nums;
+  margin-bottom: 4px;
+}
+
+.panelTitle {
+  font-size: 22px;
+  font-weight: 700;
+  color: #111;
+  line-height: 1.35;
+  letter-spacing: -0.5px;
+}
+
+/* ── More slide (separate vertical slide) ── */
+.moreSlideContent {
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 64px var(--pad) 36px;
-}
-
-.altBg {
-  background: #fafafa;
-  border-top: 1px solid #f0f0f0;
+  background: linear-gradient(150deg, #eef4ff 0%, #f5f8ff 40%, #fafbff 100%);
+  border-top: 1px solid #dde8ff;
 }
 
 .slideHeader {
   margin-bottom: 24px;
-}
-
-.label {
-  font-size: 11px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  color: var(--accent);
-  margin-bottom: 5px;
 }
 
 .sectionTitle {
@@ -32,56 +97,11 @@
   letter-spacing: -0.6px;
 }
 
-/* ── Featured 3-col grid ── */
-.featuredGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-}
-
-.featCard {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid #ebebeb;
-  border-radius: 12px;
-  overflow: hidden;
-  background: #fff;
-  transition: border-color 0.15s, box-shadow 0.15s;
-}
-
-.featCard:hover {
-  border-color: var(--accent-border);
-  box-shadow: 0 4px 20px rgba(37, 99, 235, 0.08);
-}
-
-.featThumb {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  background: #0a0a0a;
-  overflow: hidden;
-  flex-shrink: 0;
-}
-
-.featThumb video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.featInfo {
-  padding: 12px 14px 14px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-/* ── More 4-col grid ── */
 .moreGrid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
 .moreCard {
@@ -116,15 +136,8 @@
   color: var(--accent);
 }
 
-.paperTitle {
-  font-size: 14px;
-  font-weight: 600;
-  color: #111;
-  line-height: 1.4;
-}
-
 .authors {
-  font-size: 12px;
+  font-size: 13px;
   color: #777;
 }
 
@@ -149,8 +162,8 @@
   font-size: 11px;
   color: var(--accent);
   border: 1px solid var(--accent-border);
-  padding: 2px 9px;
-  border-radius: 4px;
+  padding: 3px 10px;
+  border-radius: 5px;
   text-decoration: none;
   transition: background 0.15s;
 }
@@ -160,6 +173,14 @@
   text-decoration: none;
 }
 
+.label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--accent);
+}
+
 .scholarNote {
   font-size: 13px;
   color: #999;
@@ -167,4 +188,99 @@
 
 .scholarNote a {
   color: var(--accent);
+}
+
+/* ── Arrow buttons ── */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  border: 1px solid #d1d5db;
+  background: #fff;
+  color: #333;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  transition: border-color 0.15s, color 0.15s, box-shadow 0.15s, transform 0.15s;
+}
+
+.arrow:hover {
+  border-color: #999;
+  color: #111;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+  transform: translateY(calc(-50% - 1px));
+}
+
+.arrowLeft  { left: 20px; }
+.arrowRight { right: 20px; }
+
+/* ── Panel dots at bottom ── */
+.panelDots {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+
+.panelDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #d1d5db;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.panelDotActive {
+  background: var(--accent);
+  transform: scale(1.3);
+}
+
+@media (max-width: 768px) {
+  .panel {
+    flex-direction: column;
+    padding: 80px var(--pad) 60px;
+    gap: 20px;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  .panelVideo {
+    flex: none;
+    width: 100%;
+  }
+
+  .panelTitle {
+    font-size: 17px;
+  }
+
+  .authors {
+    font-size: 12px;
+  }
+
+  .arrow {
+    display: none;
+  }
+
+  .moreSlideContent {
+    padding: 80px var(--pad) 32px;
+    justify-content: flex-start;
+  }
+
+  .moreGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .slideHeader {
+    margin-bottom: 16px;
+  }
 }

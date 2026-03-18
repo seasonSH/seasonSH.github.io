@@ -2,7 +2,7 @@ import styles from './Nav.module.css'
 
 const NAV_LINKS = [
   { label: 'Home', target: 'home' },
-  { label: 'Publications', target: 'featured' },
+  { label: 'Publications', target: 'publications' },
   { label: 'Experience', target: 'experience' },
 ]
 
@@ -16,7 +16,7 @@ export default function Nav({ active, onNavigate }) {
             key={target}
             onClick={() => onNavigate(target)}
             className={
-              active === target || (target === 'featured' && active === 'more')
+              active === target || (target === 'publications' && active === 'more')
                 ? styles.active
                 : ''
             }
