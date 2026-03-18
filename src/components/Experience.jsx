@@ -3,6 +3,7 @@ import styles from './Experience.module.css'
 const WORK = [
   {
     org: 'Meta Superintelligence Lab',
+    url: 'https://ai.meta.com/',
     role: 'Staff Research Scientist',
     desc: 'Multimodal Generative Models',
     years: '2025 – present',
@@ -10,6 +11,7 @@ const WORK = [
   },
   {
     org: 'ByteDance Seed',
+    url: 'https://team.doubao.com/en/',
     role: 'Staff Research Scientist',
     desc: 'Generative Models, AIGC',
     years: '2021 – 2025',

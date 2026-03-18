@@ -136,6 +136,100 @@
   margin-top: 1px;
 }
 
+/* ── Timeline entrance animation ── */
+
+/*
+ * Override the generic slideEnter: keep the container visible,
+ * animate each child individually instead.
+ */
+:global(#experience) .slideContent {
+  opacity: 1;
+}
+:global(#experience.active) .slideContent {
+  animation: none;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes itemSlide {
+  from { opacity: 0; transform: translateX(12px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes lineGrow {
+  from { transform: scaleY(0); }
+  to   { transform: scaleY(1); }
+}
+
+@keyframes dotPop {
+  0%   { transform: scale(0); }
+  60%  { transform: scale(1.5); }
+  100% { transform: scale(1); }
+}
+
+/* Children start hidden */
+.slideHeader,
+.colLabel,
+.item,
+.footer {
+  opacity: 0;
+}
+
+/* Line starts collapsed */
+.list::before {
+  transform-origin: top center;
+  transform: scaleY(0);
+}
+
+/* — Trigger on active — */
+
+:global(#experience.active) .slideHeader {
+  animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0s forwards;
+}
+
+:global(#experience.active) .colLabel {
+  animation: fadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards;
+}
+
+:global(#experience.active) .list::before {
+  animation: lineGrow 1.5s cubic-bezier(0.22, 1, 0.36, 1) 0.28s forwards;
+}
+
+/* Work: 4 items; Education: 2 items — same nth-child delays, both cols animate in parallel */
+:global(#experience.active) .list .item:nth-child(1) {
+  animation: itemSlide 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.32s forwards;
+}
+:global(#experience.active) .list .item:nth-child(2) {
+  animation: itemSlide 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.62s forwards;
+}
+:global(#experience.active) .list .item:nth-child(3) {
+  animation: itemSlide 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.92s forwards;
+}
+:global(#experience.active) .list .item:nth-child(4) {
+  animation: itemSlide 0.7s cubic-bezier(0.22, 1, 0.36, 1) 1.22s forwards;
+}
+
+/* Dot pop — runs on top of the item's opacity, same delay + 0.1s */
+:global(#experience.active) .list .item:nth-child(1) .dot {
+  animation: dotPop 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) 0.42s both;
+}
+:global(#experience.active) .list .item:nth-child(2) .dot {
+  animation: dotPop 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) 0.72s both;
+}
+:global(#experience.active) .list .item:nth-child(3) .dot {
+  animation: dotPop 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) 1.02s both;
+}
+:global(#experience.active) .list .item:nth-child(4) .dot {
+  animation: dotPop 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) 1.32s both;
+}
+
+:global(#experience.active) .footer {
+  animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 1.55s forwards;
+}
+
 /* ── Footer strip ── */
 .footer {
   display: flex;
