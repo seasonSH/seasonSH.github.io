@@ -41,14 +41,22 @@ const FEATURED = [
 
 const MORE = [
   {
-    tag: '3D Generation',
-    title: 'ImageDream: Image-Prompt Multi-view Diffusion for 3D Generation',
-    authorsStr: 'P. Wang, Y. Shi',
-    venue: 'arXiv 2023',
+    tag: 'Video Generation',
+    title: 'VTok: A Unified Video Tokenizer with Decoupled Spatial-Temporal Latents',
+    authorsStr: 'F. Wang, Y. Shi, C. Yang, Q. Guo, J. Sun, A. Yuille, P. Wang',
+    venue: 'arXiv 2025',
     links: [
-      { label: 'arxiv', url: 'https://arxiv.org/abs/2312.02201' },
-      { label: 'website', url: 'https://image-dream.github.io' },
-      { label: 'code', url: 'https://github.com/bytedance/ImageDream' },
+      { label: 'arxiv', url: 'https://arxiv.org/abs/2602.04202' },
+    ],
+  },
+  {
+    tag: 'Image Generation',
+    title: 'Dual Diffusion for Unified Image Generation and Understanding',
+    authorsStr: 'Z. Li, H. Li, Y. Shi, A. B. Farimani, Y. Kluger, L. Yang, P. Wang',
+    venue: 'CVPR 2025',
+    links: [
+      { label: 'paper', url: 'https://arxiv.org/abs/2501.00289' },
+      { label: 'website', url: 'https://zijieli-jlee.github.io/dualdiff.github.io/' },
     ],
   },
   {
@@ -60,6 +68,28 @@ const MORE = [
       { label: 'website', url: 'https://seed.bytedance.com/tech/seededit' },
       { label: 'report', url: 'https://lf3-static.bytednsdoc.com/obj/eden-cn/lapzild-tss/ljhwZthlaukjlkulzlp/SeedEdit.pdf' },
       { label: 'demo', url: 'https://huggingface.co/spaces/ByteDance/SeedEdit-APP' },
+    ],
+  },
+  {
+    tag: 'Image Editing',
+    title: 'HQ-Edit: A High-Quality Dataset for Instruction-based Image Editing',
+    authorsStr: 'M. Hui, S. Yang, B. Zhao, Y. Shi, et al.',
+    venue: 'ICLR 2025',
+    links: [
+      { label: 'paper', url: 'https://arxiv.org/abs/2404.09990' },
+      { label: 'website', url: 'https://thefllood.github.io/HQEdit_web/' },
+      { label: 'code', url: 'https://github.com/UCSC-VLAA/HQ-Edit' },
+    ],
+  },
+  {
+    tag: '3D Generation',
+    title: 'ImageDream: Image-Prompt Multi-view Diffusion for 3D Generation',
+    authorsStr: 'P. Wang, Y. Shi',
+    venue: 'arXiv 2023',
+    links: [
+      { label: 'arxiv', url: 'https://arxiv.org/abs/2312.02201' },
+      { label: 'website', url: 'https://image-dream.github.io' },
+      { label: 'code', url: 'https://github.com/bytedance/ImageDream' },
     ],
   },
   {
@@ -85,26 +115,6 @@ const MORE = [
     ],
   },
   {
-    tag: '3D Synthesis',
-    title: 'IDE-3D: Interactive Disentangled Editing for High-Resolution 3D-aware Portrait Synthesis',
-    authorsStr: 'J. Sun, X. Wang, Y. Shi, et al.',
-    venue: 'SIGGRAPH Asia 2022',
-    links: [
-      { label: 'paper', url: 'https://arxiv.org/pdf/2205.15517.pdf' },
-      { label: 'website', url: 'https://mrtornado24.github.io/IDE-3D' },
-    ],
-  },
-  {
-    tag: '3D Generation',
-    title: 'Lifting 2D StyleGAN for 3D-aware Face Generation',
-    authorsStr: 'Y. Shi, D. Aggarwal, A. K. Jain',
-    venue: 'CVPR 2021',
-    links: [
-      { label: 'arxiv', url: 'https://arxiv.org/abs/2011.13126' },
-      { label: 'code', url: 'https://github.com/seasonSH/LiftedGAN' },
-    ],
-  },
-  {
     tag: 'Uncertainty Learning',
     title: 'Probabilistic Face Embeddings',
     authorsStr: 'Y. Shi, A. K. Jain',
@@ -112,16 +122,6 @@ const MORE = [
     links: [
       { label: 'arxiv', url: 'https://arxiv.org/abs/1904.09658' },
       { label: 'code', url: 'https://github.com/seasonSH/Probabilistic-Face-Embeddings' },
-    ],
-  },
-  {
-    tag: 'Image Synthesis',
-    title: 'WarpGAN: Automatic Caricature Generation',
-    authorsStr: 'Y. Shi, D. Deb, A. K. Jain',
-    venue: 'CVPR 2019',
-    links: [
-      { label: 'arxiv', url: 'https://arxiv.org/abs/1811.10100' },
-      { label: 'code', url: 'https://github.com/seasonSH/WarpGAN' },
     ],
   },
 ]
