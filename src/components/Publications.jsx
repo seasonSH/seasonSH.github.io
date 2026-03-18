@@ -160,7 +160,11 @@ export default function Publications() {
     const slideEl = document.getElementById('publications')
     if (!slideEl) return
 
-    const unlock = () => { isScrolling.current = false }
+    const slidesEl = document.getElementById('slides')
+    const unlock = () => {
+      isScrolling.current = false
+      slidesEl?.removeAttribute('data-scroll-locked')
+    }
     let unlockTimer = null
 
     const scheduleUnlock = (el) => {
@@ -185,6 +189,7 @@ export default function Publications() {
       if (Math.abs(e.deltaY) < 3) return
 
       isScrolling.current = true
+      slidesEl?.setAttribute('data-scroll-locked', '1')
       const cur = activePanelRef.current
 
       if (e.deltaY > 0) {
@@ -192,7 +197,6 @@ export default function Publications() {
           goTo(cur + 1)
           scheduleUnlock(scrollRef.current)
         } else {
-          const slidesEl = document.getElementById('slides')
           slidesEl?.scrollBy({ top: window.innerHeight, behavior: 'smooth' })
           scheduleUnlock(slidesEl)
         }
@@ -201,23 +205,15 @@ export default function Publications() {
           goTo(cur - 1)
           scheduleUnlock(scrollRef.current)
         } else {
-          const slidesEl = document.getElementById('slides')
           slidesEl?.scrollBy({ top: -window.innerHeight, behavior: 'smooth' })
           scheduleUnlock(slidesEl)
         }
       }
     }
 
-    // Also block wheel on the outer slides container while locked,
-    // so inertia events landing on #more don't trigger snap to #experience
-    const slidesEl = document.getElementById('slides')
-    const blockWheel = (e) => { if (isScrolling.current) e.preventDefault() }
-    slidesEl?.addEventListener('wheel', blockWheel, { passive: false })
-
     slideEl.addEventListener('wheel', onWheel, { passive: false })
     return () => {
       slideEl.removeEventListener('wheel', onWheel)
-      slidesEl?.removeEventListener('wheel', blockWheel)
       clearTimeout(unlockTimer)
     }
   }, [])
