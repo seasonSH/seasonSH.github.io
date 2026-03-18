@@ -38,16 +38,16 @@ export default function App() {
 
     let isScrolling = false
     let timer = null
-    const unlock = () => { isScrolling = false }
+    const unlock = () => { isScrolling = false; slidesEl.removeAttribute('data-scroll-locked') }
 
     const onWheel = (e) => {
       e.preventDefault()
-      // Publications slide manages its own lock via data-scroll-locked
       if (slidesEl.dataset.scrollLocked) return
       if (isScrolling) return
       if (Math.abs(e.deltaY) < 5) return
 
       isScrolling = true
+      slidesEl.setAttribute('data-scroll-locked', '1')
       clearTimeout(timer)
 
       const curIdx = SLIDE_IDS.indexOf(activeRef.current)

@@ -186,6 +186,7 @@ export default function Publications() {
       e.preventDefault()
       e.stopPropagation()
       if (isScrolling.current) return
+      if (slidesEl?.dataset.scrollLocked) return
       if (Math.abs(e.deltaY) < 3) return
 
       isScrolling.current = true
