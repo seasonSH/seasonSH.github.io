@@ -1,5 +1,6 @@
 import { useRef, useState, useEffect } from 'react'
 import styles from './Publications.module.css'
+import { SCROLL_THRESHOLD, CAROUSEL_UNLOCK_DELAY, CAROUSEL_FALLBACK_TIMEOUT, CARD_STAGGER_BASE, CARD_STAGGER_STEP } from '../config'
 
 const FEATURED = [
   {
@@ -172,14 +173,14 @@ export default function Publications() {
       clearTimeout(unlockTimer)
       const onEnd = () => {
         el.removeEventListener('scrollend', onEnd)
-        unlockTimer = setTimeout(unlock, 200)
+        unlockTimer = setTimeout(unlock, CAROUSEL_UNLOCK_DELAY)
       }
       el.addEventListener('scrollend', onEnd, { once: true })
       // Fallback in case scrollend never fires
       unlockTimer = setTimeout(() => {
         el.removeEventListener('scrollend', onEnd)
         unlock()
-      }, 1000)
+      }, CAROUSEL_FALLBACK_TIMEOUT)
     }
 
     const onWheel = (e) => {
@@ -187,7 +188,7 @@ export default function Publications() {
       e.stopPropagation()
       if (isScrolling.current) return
       if (slidesEl?.dataset.scrollLocked) return
-      if (Math.abs(e.deltaY) < 3) return
+      if (Math.abs(e.deltaY) < SCROLL_THRESHOLD) return
 
       isScrolling.current = true
       slidesEl?.setAttribute('data-scroll-locked', '1')
@@ -289,7 +290,7 @@ export function MoreSlide() {
       </div>
       <div className={styles.moreGrid}>
         {MORE.map((p, i) => (
-          <div key={p.title} className={styles.moreCard} style={{ animationDelay: `${100 + i * 55}ms` }}>
+          <div key={p.title} className={styles.moreCard} style={{ animationDelay: `${CARD_STAGGER_BASE + i * CARD_STAGGER_STEP}ms` }}>
             <span className={styles.tag}>{p.tag}</span>
             <div className={styles.moreTitle}>{p.title}</div>
             <div className={styles.authors}>{p.authorsStr}</div>
@@ -298,7 +299,7 @@ export function MoreSlide() {
           </div>
         ))}
       </div>
-      <p className={styles.scholarNote} style={{ animationDelay: `${100 + MORE.length * 55}ms` }}>
+      <p className={styles.scholarNote} style={{ animationDelay: `${CARD_STAGGER_BASE + MORE.length * CARD_STAGGER_STEP}ms` }}>
         Full list on{' '}
         <a href="https://scholar.google.com/citations?hl=en&user=RXZChV0AAAAJ" target="_blank" rel="noreferrer">
           Google Scholar

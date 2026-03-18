@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { SCROLL_THRESHOLD, SCROLL_UNLOCK_DELAY, SCROLL_FALLBACK_TIMEOUT } from './config'
 import Nav from './components/Nav'
 import Hero from './components/Hero'
 import Publications, { MoreSlide } from './components/Publications'
@@ -44,7 +45,7 @@ export default function App() {
       e.preventDefault()
       if (slidesEl.dataset.scrollLocked) return
       if (isScrolling) return
-      if (Math.abs(e.deltaY) < 5) return
+      if (Math.abs(e.deltaY) < SCROLL_THRESHOLD) return
 
       isScrolling = true
       slidesEl.setAttribute('data-scroll-locked', '1')
@@ -60,10 +61,10 @@ export default function App() {
       const onEnd = () => {
         slidesEl.removeEventListener('scrollend', onEnd)
         clearTimeout(timer)
-        timer = setTimeout(unlock, 300)
+        timer = setTimeout(unlock, SCROLL_UNLOCK_DELAY)
       }
       slidesEl.addEventListener('scrollend', onEnd, { once: true })
-      timer = setTimeout(unlock, 1200)
+      timer = setTimeout(unlock, SCROLL_FALLBACK_TIMEOUT)
     }
 
     slidesEl.addEventListener('wheel', onWheel, { passive: false })

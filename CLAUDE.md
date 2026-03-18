@@ -31,8 +31,9 @@ Side dot navigation (desktop only, hidden on mobile via `@media`).
 
 ```
 src/
+  config.js                  # Tunable constants (scroll thresholds, timings, animation delays)
   index.css                  # CSS vars, reset, slide infrastructure, entrance animation
-  App.jsx                    # Root: SLIDE_IDS, IntersectionObserver, Nav + slides
+  App.jsx                    # Root: SLIDE_IDS, IntersectionObserver, global wheel controller, Nav + slides
   App.module.css             # Side dot indicators (hidden on mobile)
   components/
     Nav.jsx / .module.css    # Fixed top nav; highlights Publications for both pub slides
@@ -43,13 +44,37 @@ src/
     Experience.module.css    # Two-column grid (single column on mobile), footer strip
 ```
 
+## config.js — tunable constants
+
+All user-facing feel parameters live here. Edit this file to tune behaviour without touching logic.
+
+| Constant                  | Default | Controls                                              |
+|---------------------------|---------|-------------------------------------------------------|
+| `SCROLL_THRESHOLD`        | `20`    | Min wheel deltaY to trigger any slide/panel transition |
+| `SCROLL_UNLOCK_DELAY`     | `300`   | ms after scrollend before accepting next vertical gesture |
+| `SCROLL_FALLBACK_TIMEOUT` | `1200`  | ms fallback unlock if scrollend never fires (vertical) |
+| `CAROUSEL_UNLOCK_DELAY`   | `200`   | ms after scrollend before accepting next carousel gesture |
+| `CAROUSEL_FALLBACK_TIMEOUT`| `1000` | ms fallback unlock if scrollend never fires (carousel) |
+| `CARD_STAGGER_BASE`       | `100`   | ms delay before first More-slide card animates in     |
+| `CARD_STAGGER_STEP`       | `55`    | ms added per card index for the cascade effect        |
+
+## Scroll control architecture
+
+All vertical navigation is owned by App.jsx's global wheel handler on `#slides`:
+- Intercepts every wheel event with `{ passive: false }` + `preventDefault()` — prevents native scroll-snap from jumping multiple slides
+- Enforces one-slide-at-a-time using `isScrolling` lock + `data-scroll-locked` attribute on `#slides`
+- `scrollend` event (+ fallback timeout) drives unlock timing
+
+Publications.jsx owns its horizontal carousel:
+- Wheel handler on `#publications` calls `e.stopPropagation()` so App.jsx's handler doesn't also fire
+- Sets `data-scroll-locked` on `#slides` when navigating, clearing it on unlock — App.jsx and Publications both check this attribute before acting
+- `activePanelRef` avoids stale closure in the wheel handler
+
 ## Slide 2: Featured Publications Carousel
 
 - Horizontal `scroll-snap-type: x mandatory` strip inside the vertical slide
-- Wheel events intercepted (`{ passive: false }` + `preventDefault()`): `deltaY` → horizontal panel nav; at edges → vertical slide scroll
-- `scrollend` event (+ 1s fallback timeout) unlocks scroll after animation completes
-- `activePanelRef` avoids stale closure in wheel handler
-- Arrow buttons positioned at `left: 52px` / `right: 52px`; hidden on mobile
+- `deltaY` → horizontal panel nav; at carousel edges → vertical slide transition
+- Arrow buttons at `left/right: 52px`; hidden on mobile
 
 ## Design tokens (src/index.css :root)
 
