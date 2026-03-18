@@ -214,8 +214,8 @@
   transform: translateY(calc(-50% - 1px));
 }
 
-.arrowLeft  { left: 20px; }
-.arrowRight { right: 20px; }
+.arrowLeft  { left: 52px; }
+.arrowRight { right: 52px; }
 
 /* ── Panel dots at bottom ── */
 .panelDots {
