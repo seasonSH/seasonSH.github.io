@@ -57,8 +57,8 @@ Array of items: `{ org, url?, role, desc, years, type }`.
 ## Owner info
 
 - Name: Yichun Shi
-- Current: Staff Research Scientist @ Meta Superintelligence Lab (2024–present)
-- Previous: Research Scientist @ ByteDance Seed (2021–2024)
+- Current: Staff Research Scientist @ Meta Superintelligence Lab (2025–present)
+- Previous: Staff Research Scientist @ ByteDance Seed (2021–2025)
 - PhD: MSU Biometrics Lab, advised by Prof. Anil K. Jain
 - BS: SJTU IEEE Honor Class
 - Google Scholar: https://scholar.google.com/citations?hl=en&user=RXZChV0AAAAJ

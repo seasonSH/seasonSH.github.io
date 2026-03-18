@@ -5,14 +5,14 @@ const ITEMS = [
     org: 'Meta Superintelligence Lab',
     role: 'Staff Research Scientist',
     desc: 'Generative Models',
-    years: '2024 – present',
+    years: '2025 – present',
     type: 'work',
   },
   {
     org: 'ByteDance Seed',
-    role: 'Research Scientist',
+    role: 'Staff Research Scientist',
     desc: 'Generative Models, AIGC',
-    years: '2021 – 2024',
+    years: '2021 – 2025',
     type: 'work',
   },
   {
