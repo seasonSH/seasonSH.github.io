@@ -208,9 +208,16 @@ export default function Publications() {
       }
     }
 
+    // Also block wheel on the outer slides container while locked,
+    // so inertia events landing on #more don't trigger snap to #experience
+    const slidesEl = document.getElementById('slides')
+    const blockWheel = (e) => { if (isScrolling.current) e.preventDefault() }
+    slidesEl?.addEventListener('wheel', blockWheel, { passive: false })
+
     slideEl.addEventListener('wheel', onWheel, { passive: false })
     return () => {
       slideEl.removeEventListener('wheel', onWheel)
+      slidesEl?.removeEventListener('wheel', blockWheel)
       clearTimeout(unlockTimer)
     }
   }, [])
