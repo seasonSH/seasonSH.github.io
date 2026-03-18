@@ -74,6 +74,30 @@
   letter-spacing: -0.5px;
 }
 
+/* ── More slide stagger animation ── */
+@keyframes cardEnter {
+  from { opacity: 0; transform: translateY(22px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0)     scale(1); }
+}
+
+/* Neutralise the global slideEnter on the container — children animate instead */
+:global(.slide.active) .moreSlideContent {
+  opacity: 1;
+  animation: none;
+}
+
+.slideHeader,
+.moreCard,
+.scholarNote {
+  opacity: 0;
+}
+
+:global(.slide.active) .slideHeader,
+:global(.slide.active) .moreCard,
+:global(.slide.active) .scholarNote {
+  animation: cardEnter 0.48s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
 /* ── More slide (separate vertical slide) ── */
 .moreSlideContent {
   width: 100%;

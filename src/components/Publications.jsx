@@ -279,13 +279,13 @@ export default function Publications() {
 export function MoreSlide() {
   return (
     <div className={styles.moreSlideContent}>
-      <div className={styles.slideHeader}>
+      <div className={styles.slideHeader} style={{ animationDelay: '0ms' }}>
         <div className={styles.label}>More Work</div>
         <div className={styles.sectionTitle}>Publications</div>
       </div>
       <div className={styles.moreGrid}>
-        {MORE.map((p) => (
-          <div key={p.title} className={styles.moreCard}>
+        {MORE.map((p, i) => (
+          <div key={p.title} className={styles.moreCard} style={{ animationDelay: `${100 + i * 55}ms` }}>
             <span className={styles.tag}>{p.tag}</span>
             <div className={styles.moreTitle}>{p.title}</div>
             <div className={styles.authors}>{p.authorsStr}</div>
@@ -294,7 +294,7 @@ export function MoreSlide() {
           </div>
         ))}
       </div>
-      <p className={styles.scholarNote}>
+      <p className={styles.scholarNote} style={{ animationDelay: `${100 + MORE.length * 55}ms` }}>
         Full list on{' '}
         <a href="https://scholar.google.com/citations?hl=en&user=RXZChV0AAAAJ" target="_blank" rel="noreferrer">
           Google Scholar
