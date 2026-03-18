@@ -15,7 +15,6 @@ const FEATURED = [
   {
     tag: 'Image Generation',
     title: 'SeedEdit: Align Image Re-generation to Image Editing',
-    authors: [{ name: 'Y. Shi', me: true }, { name: '*' }, { name: 'P. Wang' }, { name: '*' }, { name: 'W. Huang' }],
     authorsStr: 'Y. Shi*, P. Wang*, W. Huang',
     venue: 'Technical Report · ByteDance Seed',
     links: [
@@ -28,7 +27,7 @@ const FEATURED = [
   {
     tag: '3D Generation',
     title: 'MVDream: Multi-view Diffusion for 3D Generation',
-    authorsStr: 'Y. Shi, P. Wang, J. Ye, M. Long, K. Ye, X. Yang',
+    authorsStr: 'Y. Shi, P. Wang, J. Ye, M. Long, K. Li, X. Yang',
     venue: 'ICLR 2024',
     links: [
       { label: 'paper', url: 'https://arxiv.org/abs/2308.16512' },
@@ -54,7 +53,7 @@ const MORE = [
   {
     tag: 'Image Generation',
     title: 'SeedEdit 3.0: Fast and High-Quality Generative Image Editing',
-    authorsStr: 'P. Wang, Y. Shi, X. Lian, Z. Zhai, X. Xia, X. Xiao, W. Huang, J. Yang',
+    authorsStr: 'P. Wang, Y. Shi, X. Lian, et al.',
     venue: 'Technical Report · ByteDance Seed',
     links: [
       { label: 'arxiv', url: 'https://arxiv.org/abs/2506.05083' },
@@ -63,13 +62,12 @@ const MORE = [
   },
   {
     tag: 'Image Synthesis',
-    title: 'SemanticStyleGAN: Learning Compositional Generative Priors for Controllable Image Synthesis and Editing',
+    title: 'SemanticStyleGAN: Learning Compositional Generative Priors for Controllable Image Synthesis',
     authorsStr: 'Y. Shi, X. Yang, Y. Wan, X. Shen',
     venue: 'CVPR 2022',
     links: [
       { label: 'arxiv', url: 'https://arxiv.org/abs/2112.02236' },
       { label: 'website', url: 'https://semanticstylegan.github.io/' },
-      { label: 'video', url: 'https://www.youtube.com/watch?v=nfKiVX4pFlw' },
       { label: 'code', url: 'https://github.com/seasonSH/SemanticStyleGAN' },
     ],
   },
@@ -87,12 +85,11 @@ const MORE = [
   {
     tag: '3D Synthesis',
     title: 'IDE-3D: Interactive Disentangled Editing for High-Resolution 3D-aware Portrait Synthesis',
-    authorsStr: 'J. Sun, X. Wang, Y. Shi, L. Wang, J. Wang, Y. Liu',
+    authorsStr: 'J. Sun, X. Wang, Y. Shi, et al.',
     venue: 'SIGGRAPH Asia 2022',
     links: [
       { label: 'paper', url: 'https://arxiv.org/pdf/2205.15517.pdf' },
       { label: 'website', url: 'https://mrtornado24.github.io/IDE-3D' },
-      { label: 'code', url: 'https://github.com/MrTornado24/IDE-3D' },
     ],
   },
   {
@@ -139,65 +136,63 @@ function PaperLinks({ links }) {
   )
 }
 
-function FeaturedPaper({ paper }) {
+export function FeaturedSlide() {
   return (
-    <div className={styles.featuredPaper}>
-      <div className={styles.thumb}>
-        {paper.video ? (
-          <video autoPlay loop muted playsInline>
-            <source src={paper.video} type="video/mp4" />
-          </video>
-        ) : (
-          <div className={styles.thumbPlaceholder}>preview</div>
-        )}
+    <div className={styles.slideContent}>
+      <div className={styles.slideHeader}>
+        <div className={styles.label}>Featured Work</div>
+        <div className={styles.sectionTitle}>Selected Publications</div>
       </div>
-      <div className={styles.paperInfo}>
-        <span className={styles.tag}>{paper.tag}</span>
-        <h3 className={styles.paperTitle}>{paper.title}</h3>
-        <p className={styles.authors}>{paper.authorsStr}</p>
-        <span className={styles.venue}>{paper.venue}</span>
-        <PaperLinks links={paper.links} />
-      </div>
-    </div>
-  )
-}
-
-function SmallCard({ paper }) {
-  return (
-    <div className={styles.card}>
-      <span className={styles.tag}>{paper.tag}</span>
-      <h4 className={styles.cardTitle}>{paper.title}</h4>
-      <p className={styles.authors}>{paper.authorsStr}</p>
-      <span className={styles.venue}>{paper.venue}</span>
-      <PaperLinks links={paper.links} />
-    </div>
-  )
-}
-
-export default function Publications() {
-  return (
-    <section id="publications" className={styles.section}>
-      <p className={styles.sectionLabel}>Featured Work</p>
-      <h2 className={styles.sectionTitle}>Selected Publications</h2>
-
-      <div className={styles.featured}>
+      <div className={styles.featuredGrid}>
         {FEATURED.map((p) => (
-          <FeaturedPaper key={p.title} paper={p} />
+          <div key={p.title} className={styles.featCard}>
+            <div className={styles.featThumb}>
+              <video autoPlay loop muted playsInline>
+                <source src={p.video} type="video/mp4" />
+              </video>
+            </div>
+            <div className={styles.featInfo}>
+              <span className={styles.tag}>{p.tag}</span>
+              <div className={styles.paperTitle}>{p.title}</div>
+              <div className={styles.authors}>{p.authorsStr}</div>
+              <span className={styles.venue}>{p.venue}</span>
+              <PaperLinks links={p.links} />
+            </div>
+          </div>
         ))}
       </div>
+    </div>
+  )
+}
 
+export function MoreSlide() {
+  return (
+    <div className={`${styles.slideContent} ${styles.altBg}`}>
+      <div className={styles.slideHeader}>
+        <div className={styles.label}>More Work</div>
+        <div className={styles.sectionTitle}>Publications</div>
+      </div>
       <div className={styles.moreGrid}>
         {MORE.map((p) => (
-          <SmallCard key={p.title} paper={p} />
+          <div key={p.title} className={styles.moreCard}>
+            <span className={styles.tag}>{p.tag}</span>
+            <div className={styles.moreTitle}>{p.title}</div>
+            <div className={styles.authors}>{p.authorsStr}</div>
+            <span className={styles.venue}>{p.venue}</span>
+            <PaperLinks links={p.links} />
+          </div>
         ))}
       </div>
-
-      <p className={styles.scholarLink}>
+      <p className={styles.scholarNote}>
         Full list on{' '}
-        <a href="https://scholar.google.com/citations?hl=en&user=RXZChV0AAAAJ" target="_blank" rel="noreferrer">
+        <a
+          href="https://scholar.google.com/citations?hl=en&user=RXZChV0AAAAJ"
+          target="_blank"
+          rel="noreferrer"
+        >
           Google Scholar
         </a>
       </p>
-    </section>
+    </div>
   )
 }

@@ -1,79 +1,113 @@
-.section {
-  max-width: var(--max-w);
-  margin: 0 auto;
-  padding: 56px var(--pad-x);
-  border-top: 1px solid var(--border-light);
+.slideContent {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 64px var(--pad) 36px;
 }
 
-.sectionLabel {
+.altBg {
+  background: #fafafa;
+  border-top: 1px solid #f0f0f0;
+}
+
+.slideHeader {
+  margin-bottom: 24px;
+}
+
+.label {
   font-size: 11px;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 1.5px;
+  letter-spacing: 2px;
   color: var(--accent);
-  margin-bottom: 6px;
+  margin-bottom: 5px;
 }
 
 .sectionTitle {
   font-size: 26px;
   font-weight: 700;
-  color: var(--black);
-  margin-bottom: 40px;
-  letter-spacing: -0.5px;
+  color: #111;
+  letter-spacing: -0.6px;
 }
 
-/* Featured papers — full width rows */
-.featured {
+/* ── Featured 3-col grid ── */
+.featuredGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.featCard {
   display: flex;
   flex-direction: column;
-  gap: 0;
-  margin-bottom: 32px;
-}
-
-.featuredPaper {
-  display: flex;
-  gap: 24px;
-  padding: 28px 0;
-  border-bottom: 1px solid var(--border-light);
-}
-
-.featuredPaper:first-child {
-  padding-top: 0;
-}
-
-.thumb {
-  width: 260px;
-  min-width: 260px;
-  aspect-ratio: 16 / 9;
-  border-radius: 8px;
+  border: 1px solid #ebebeb;
+  border-radius: 12px;
   overflow: hidden;
-  background: var(--bg-subtle);
-  border: 1px solid var(--border);
+  background: #fff;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.featCard:hover {
+  border-color: var(--accent-border);
+  box-shadow: 0 4px 20px rgba(37, 99, 235, 0.08);
+}
+
+.featThumb {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #0a0a0a;
+  overflow: hidden;
   flex-shrink: 0;
 }
 
-.thumb video {
+.featThumb video {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
 }
 
-.thumbPlaceholder {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 11px;
-  color: var(--gray-faint);
-}
-
-.paperInfo {
+.featInfo {
+  padding: 12px 14px 14px;
   display: flex;
   flex-direction: column;
   gap: 4px;
 }
 
+/* ── More 4-col grid ── */
+.moreGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.moreCard {
+  border: 1px solid #ebebeb;
+  border-radius: 10px;
+  padding: 12px 14px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.moreCard:hover {
+  border-color: var(--accent-border);
+  box-shadow: 0 2px 16px rgba(37, 99, 235, 0.07);
+}
+
+.moreTitle {
+  font-size: 12px;
+  font-weight: 600;
+  color: #111;
+  line-height: 1.4;
+}
+
+/* ── Shared paper elements ── */
 .tag {
   font-size: 10px;
   font-weight: 600;
@@ -83,21 +117,20 @@
 }
 
 .paperTitle {
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 600;
-  color: var(--black);
-  line-height: 1.45;
+  color: #111;
+  line-height: 1.4;
 }
 
 .authors {
-  font-size: 13px;
-  color: var(--gray-mid);
+  font-size: 12px;
+  color: #777;
 }
 
 .venue {
   display: inline-block;
   font-size: 11px;
-  font-weight: 500;
   background: var(--accent-bg);
   color: var(--accent);
   padding: 2px 9px;
@@ -105,83 +138,33 @@
   width: fit-content;
 }
 
-/* Links */
 .paperLinks {
   display: flex;
   gap: 6px;
   flex-wrap: wrap;
-  margin-top: 4px;
+  margin-top: 2px;
 }
 
 .paperLinks a {
-  font-size: 12px;
-  color: var(--link);
-  border: 1px solid var(--border);
-  padding: 3px 10px;
-  border-radius: 5px;
+  font-size: 11px;
+  color: var(--accent);
+  border: 1px solid var(--accent-border);
+  padding: 2px 9px;
+  border-radius: 4px;
   text-decoration: none;
-  transition: border-color 0.15s, background 0.15s;
+  transition: background 0.15s;
 }
 
 .paperLinks a:hover {
-  border-color: var(--link);
-  background: #f0f7ff;
+  background: var(--accent-bg);
   text-decoration: none;
 }
 
-/* More papers — 2-col grid */
-.moreGrid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
-  margin-bottom: 32px;
-}
-
-.card {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 18px 20px;
-  background: var(--bg-subtle);
-  transition: border-color 0.15s, box-shadow 0.15s;
-}
-
-.card:hover {
-  border-color: var(--accent-border);
-  background: #fff;
-  box-shadow: 0 2px 16px rgba(37, 99, 235, 0.08);
-}
-
-.cardTitle {
+.scholarNote {
   font-size: 13px;
-  font-weight: 600;
-  color: var(--black);
-  line-height: 1.45;
+  color: #999;
 }
 
-.scholarLink {
-  font-size: 13px;
-  color: var(--gray-mid);
-  border-top: 1px solid var(--border-light);
-  padding-top: 24px;
-}
-
-.scholarLink a {
-  color: var(--link);
-}
-
-@media (max-width: 640px) {
-  .featuredPaper {
-    flex-direction: column;
-  }
-  .thumb {
-    width: 100%;
-    min-width: unset;
-    height: 180px;
-  }
-  .moreGrid {
-    grid-template-columns: 1fr;
-  }
+.scholarNote a {
+  color: var(--accent);
 }

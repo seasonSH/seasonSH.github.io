@@ -1,6 +1,6 @@
 import styles from './Experience.module.css'
 
-const ITEMS = [
+const WORK = [
   {
     org: 'Meta Superintelligence Lab',
     role: 'Staff Research Scientist',
@@ -31,6 +31,9 @@ const ITEMS = [
     years: 'Summer 2018',
     type: 'intern',
   },
+]
+
+const EDU = [
   {
     org: 'Michigan State University',
     url: 'https://msu.edu/',
@@ -49,34 +52,58 @@ const ITEMS = [
   },
 ]
 
+function ExpItem({ item }) {
+  return (
+    <div className={styles.item}>
+      <div className={`${styles.dot} ${styles[item.type]}`} />
+      <div className={styles.itemHeader}>
+        <span className={styles.org}>
+          {item.url ? (
+            <a href={item.url} target="_blank" rel="noreferrer">{item.org}</a>
+          ) : (
+            item.org
+          )}
+        </span>
+        <span className={styles.years}>{item.years}</span>
+      </div>
+      <p className={styles.role}>{item.role}</p>
+      <p className={styles.desc}>{item.desc}</p>
+    </div>
+  )
+}
+
 export default function Experience() {
   return (
-    <section id="experience" className={styles.section}>
-      <p className={styles.sectionLabel}>Background</p>
-      <h2 className={styles.sectionTitle}>Experience & Education</h2>
-      <div className={styles.timeline}>
-        {ITEMS.map((item) => (
-          <div key={item.org} className={styles.item}>
-            <div className={styles.dot} data-type={item.type} />
-            <div className={styles.content}>
-              <div className={styles.row}>
-                <span className={styles.org}>
-                  {item.url ? (
-                    <a href={item.url} target="_blank" rel="noreferrer">
-                      {item.org}
-                    </a>
-                  ) : (
-                    item.org
-                  )}
-                </span>
-                <span className={styles.years}>{item.years}</span>
-              </div>
-              <p className={styles.role}>{item.role}</p>
-              <p className={styles.desc}>{item.desc}</p>
-            </div>
-          </div>
-        ))}
+    <div className={styles.slideContent}>
+      <div className={styles.slideHeader}>
+        <div className={styles.label}>Background</div>
+        <div className={styles.sectionTitle}>Experience &amp; Education</div>
       </div>
-    </section>
+      <div className={styles.cols}>
+        <div>
+          <div className={styles.colLabel}>Work</div>
+          <div className={styles.list}>
+            {WORK.map((item) => <ExpItem key={item.org} item={item} />)}
+          </div>
+        </div>
+        <div>
+          <div className={styles.colLabel}>Education</div>
+          <div className={styles.list}>
+            {EDU.map((item) => <ExpItem key={item.org} item={item} />)}
+          </div>
+        </div>
+      </div>
+      <div className={styles.footer}>
+        <span className={styles.footerLeft}>
+          sc2h6o (at) gmail (dot) com &nbsp;·&nbsp; Sunnyvale, CA &nbsp;·&nbsp; © {new Date().getFullYear()} Yichun Shi
+        </span>
+        <div className={styles.footerLinks}>
+          <a href="https://scholar.google.com/citations?hl=en&user=RXZChV0AAAAJ" target="_blank" rel="noreferrer">Scholar</a>
+          <a href="https://github.com/seasonSH" target="_blank" rel="noreferrer">GitHub</a>
+          <a href="https://www.linkedin.com/in/yichun-shi-081a56b6" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a href="https://seasonsh.github.io/static/CV.pdf" target="_blank" rel="noreferrer">CV</a>
+        </div>
+      </div>
+    </div>
   )
 }
