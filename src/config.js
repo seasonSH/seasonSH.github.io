@@ -20,7 +20,7 @@ export const CAROUSEL_FALLBACK_TIMEOUT = 1000
 // ─── More-slide card animation ────────────────────────────────────────────────
 
 // Delay before the first card animates in (ms).
-export const CARD_STAGGER_BASE = 100
+export const CARD_STAGGER_BASE = 150
 
 // Additional delay per card index (ms). Controls how fast the cascade plays out.
-export const CARD_STAGGER_STEP = 55
+export const CARD_STAGGER_STEP = 150

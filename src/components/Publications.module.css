@@ -95,7 +95,7 @@
 :global(.slide.active) .slideHeader,
 :global(.slide.active) .moreCard,
 :global(.slide.active) .scholarNote {
-  animation: cardEnter 0.48s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: cardEnter 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 /* ── More slide (separate vertical slide) ── */
