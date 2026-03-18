@@ -19,7 +19,7 @@ const FEATURED = [
     authorsStr: 'Y. Shi*, P. Wang*, W. Huang',
     venue: 'Technical Report · ByteDance Seed',
     links: [
-      { label: 'website', url: 'https://team.doubao.com/en/special/seededit' },
+      { label: 'website', url: 'https://seed.bytedance.com/tech/seededit' },
       { label: 'report', url: 'https://lf3-static.bytednsdoc.com/obj/eden-cn/lapzild-tss/ljhwZthlaukjlkulzlp/SeedEdit.pdf' },
       { label: 'demo', url: 'https://huggingface.co/spaces/ByteDance/SeedEdit-APP' },
     ],
